@@ -1,4 +1,6 @@
 import express from "express";
+import "./database"; // Importa por padrão o index.js
+import {routes} from "./routes";
 
 const app = express();
 
@@ -8,19 +10,9 @@ const app = express();
 // DELETE = Deleção
 // PATCH = Alterar uma informação específica
 
-app.get("/", (request, response) => {
-  return response.json({message: "Hello NLW05"});
-});
+app.use(express.json())
 
-// Acessar via http://localhost:3333/
-
-app.post("/", (request, response) => {
-  return response.json({message: "Usuário salvo com sucesso!"});
-});
-
-// Podemos colocar a mesma rota pois estamos usando métodos diferentes, sendo eles GET e POST
-// Por padrão, os navegadores vão fazer requisições GET
-
+app.use(routes);
 
 app.listen(3333, () => console.log("Server is running on port 3333"));
 
@@ -48,4 +40,7 @@ Anotações do método de inicialização ts + yarn
   }
 
   yarn dev
+
+  Instalamos o typeorm, seguindo o procedimento no getting started do site deles
+
 */

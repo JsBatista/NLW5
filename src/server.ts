@@ -1,22 +1,7 @@
-import express from "express";
-import "./database"; // Importa por padrão o index.js
-import {routes} from "./routes";
+import {http} from "./http";
+import "./websocket/client";
 
-const app = express();
-
-// GET = Buscas
-// POST = Criação
-// PUT = Alteração
-// DELETE = Deleção
-// PATCH = Alterar uma informação específica
-
-app.use(express.json())
-
-app.use(routes);
-
-app.listen(3333, () => console.log("Server is running on port 3333"));
-
-
+http.listen(3333, () => console.log("Server is running on port 3333"));
 
 
 /*
